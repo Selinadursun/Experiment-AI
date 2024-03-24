@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment-AI</title>
+    <title>EXPERIMENT-AI</title>
 </head>
+
 <body>
-    <div>Teachable Machine Image Model</div>
+    <main>
+        <div>Teachable Machine Image Model</div>
     <button type="button" onclick="init()">Start</button>
     <div id="webcam-container"></div>
     <div id="label-container"></div>
@@ -63,8 +66,10 @@
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-        }
-    </script>
-</main>
+ 
+        </script>
+
+    </main>
 </body>
+
 </html>
