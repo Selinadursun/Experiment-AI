@@ -14,8 +14,8 @@
     <script>
         // Load the model
         async function loadModel() {
-            const modelURL = https://selinadursun.github.io/Experiment-AI/ + "model.json";
-            const metadataURL = https://selinadursun.github.io/Experiment-AI/ + "metadata.json";
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
             return await tmImage.load(modelURL, metadataURL);
         }
 
@@ -35,8 +35,13 @@
         }
 
         // Load the model first
+        let model, webcam, labelContainer;
+        const URL = "https://your-web-server.com/path/to/your/model/";
+        let maxPredictions;
+
         loadModel().then(function (loadedModel) {
             model = loadedModel;
+            maxPredictions = model.getTotalClasses();
 
             // Set up the webcam
             webcam = new tmImage.Webcam(200, 200, 'webcam-container');
@@ -45,7 +50,9 @@
 
             // Append elements to the DOM
             const startButton = document.getElementById("startButton");
-            startButton.addEventListener("click", predict);
+            startButton.addEventListener("click", function() {
+                predict();
+            });
 
             labelContainer = document.getElementById("label-container");
             for (let i = 0; i < maxPredictions; i++) {
